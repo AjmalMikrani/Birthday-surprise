@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Taiyaba Banu!</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: url('photo-1464349153735-7db50ed83c84.jpg') no-repeat center center fixed;
+        background-size: cover;
+        text-align: center;
+        overflow-x: hidden;
+        color: white;
+        position: relative;
+    }
+
+    /* Dark overlay for readability */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.45);
+        z-index: 0;
+    }
+
+    .header {
+        padding: 30px;
+        background: rgba(123, 31, 162, 0.85);
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 2.8rem;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .moon {
+        font-size: 50px;
+        margin-top: 10px;
+        display: block;
+    }
+
+    .duaa {
+        font-size: 1.3rem;
+        max-width: 700px;
+        margin: 20px auto;
+        line-height: 1.8;
+        color: white;
+        padding: 0 20px;
+        text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn {
+        background: #7b1fa2;
+        color: white;
+        padding: 15px 50px;
+        border: none;
+        border-radius: 35px;
+        font-size: 1.3rem;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: 0.3s;
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn:hover {
+        background: #9c27b0;
+        transform: scale(1.05);
+    }
+
+    .surprise {
+        display: none;
+        background: rgba(255,255,255,0.85); /* semi-transparent for readability */
+        color: #333;
+        margin: 40px auto;
+        padding: 60px 30px;
+        max-width: 800px;
+        border-radius: 25px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        position: relative;
+        z-index: 1;
+        text-shadow: none;
+    }
+
+    .surprise h2 {
+        font-size: 2rem;
+        color: #7b1fa2;
+    }
+
+    .surprise p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-top: 20px;
+        color: #333;
+    }
+
+    .surprise img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-top: 30px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.6);
+        border: 4px solid #7b1fa2;
+    }
+
+    #confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .surprise.show {
+        animation: fadeIn 1.2s forwards;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: scale(0.9);}
+        to {opacity: 1; transform: scale(1);}
+    }
+
+    @media (max-width: 850px) {
+        .surprise {
+            padding: 40px 20px;
+        }
+
+        .surprise img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+        }
+
+        .duaa {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🎉 Happy Birthday, Taiyaba Banu! 🎉</h1>
+    <span class="moon">🌙</span>
+</div>
+
+<p class="duaa">
+    🌙 May Allah bless your life with endless happiness, peace, and barakah.  
+    May He guide you to success, protect your heart, and fill your days with nur and joy.  
+    InshaAllah, this year brings you closer to your dreams.  
+    Ameen. 🤍✨
+</p>
+
+<button class="btn" onclick="showSurprise()">Click for Your Surprise 🎁</button>
+
+<div id="surpriseBox" class="surprise">
+    <h2>🎂 You're Truly Special, Taiyaba! 🎂</h2>
+    <p>
+        This little surprise is to brighten your day and remind you how amazing you are.  
+        May Allah always protect you and keep you smiling. 💛
+    </p>
+    <img src="588651613_18068728313593371_5863713137222112475_n.jpg" alt="Taiyaba">
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script>
+function showSurprise() {
+    const box = document.getElementById("surpriseBox");
+    box.style.display = "block";
+    box.classList.add("show");
+    startConfetti();
+}
+
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let pieces = [];
+for (let i = 0; i < 200; i++) {
+    pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        w: 8,
+        h: 14,
+        speed: Math.random() + 1,
+        color: `hsl(${Math.random() * 360}, 100%, 50%)`
+    });
+}
+
+function startConfetti() {
+    setInterval(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+            p.y += p.speed;
+            if (p.y > canvas.height) p.y = -10;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y, p.w, p.h);
+        });
+    }, 20);
+}
+</script>
+
+</body>
+</html>
+
